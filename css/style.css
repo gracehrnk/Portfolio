@@ -58,6 +58,9 @@ body::before{
     z-index: -1;
     opacity: 0.12;;
 }
+body.hide-scrolling{
+    overflow-y: hidden;
+}
 a{
     text-decoration: none;
 }
@@ -71,6 +74,9 @@ img{
     max-width: 100%;
     vertical-align: middle;
 }
+ul{
+    list-style: none;
+}
 section{
     background-color: var(--white-alpha-25);
     border: 1px solid var(--white-alpha-40);
@@ -81,6 +87,10 @@ section{
 .main{
     max-width: 1200px;
     margin: auto;
+    transition: all 0.5s ease-in-out;
+}
+.main.fade-out{
+    opacity: 0;
 }
 .container{
     padding: 0 40px;
@@ -335,11 +345,12 @@ About Section
 }
 .about-text .timeline-item h4{
     font-size: 18px;
+    font-weight: 500;
     text-transform: capitalize;
     margin: 0 0 10px;
 }
 .about-text .timeline-item h4 span{
-    font-weight: 400;
+    font-weight: 300;
 }
 .about-text .btn{
     margin: 0 15px 15px 0;
@@ -348,6 +359,9 @@ About Section
 /* -------------------- 
 Portfolio Section 
 -------------------- */
+.portfolio-section{
+    padding-bottom: 50px;
+}
 .portfolio-item{
     width: calc((100% / 3) - 30px);
     margin: 0 15px 30px;
@@ -369,4 +383,143 @@ Portfolio Section
 }
 .portfolio-item-details{
     display: none;
+}
+
+/* Portfolio Popup */
+.portfolio-popup{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 200;
+    visibility: hidden;
+    overflow-y: auto;
+}
+.portfolio-popup.open{
+    visibility: visible;
+    overflow-y: auto;
+}
+.pp-inner{
+    min-height: 100vh;
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pp-content{
+    background-color: var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+    padding: 30px;
+    max-width: 750px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid var(--white-alpha-40);
+    opacity: 0;
+    transform: scale(0.9);
+}
+.portfolio-popup.open .pp-content{
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.5s ease;
+}
+.pp-header{
+    position: relative;
+}
+.pp-header .btn{
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: -40px;
+    top: -40px;
+}
+.pp-thumbnail img{
+    border-radius: 10px;
+}
+.pp-header h3{
+    font-size: 25px;
+    text-transform: capitalize;
+    margin: 20px 0 15px;
+}
+.pp-body .description{
+    margin-bottom: 20px;
+}
+.pp-body .general-info li{
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.pp-body .general-info li span{
+    font-weight: 300;
+}
+
+/* -------------------- 
+Contact Section 
+-------------------- */
+.contact-form, 
+.contact-info{
+    width: 50%;
+    padding: 0 15px;
+}
+.contact-form .input-group{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.contact-form .input-control::placeholder{
+    color: var(--blue-dark);
+    opacity: 0.8;
+    font-weight: 300;
+}
+.contact-form .input-control{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: var(--white-alpha-25);
+    padding: 0 20px;
+    color: var(--blue-dark);
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.contact-form .input-control:focus{
+    border-color: var(--white-alpha-40);
+}
+.contact-form textarea.input-control{
+    height: 120px;
+    resize: none;
+    padding-top: 15px;
+}
+.contact-info-item{
+    margin: 0 0 30px;
+    padding: 0 0 0 20px;
+}
+.contact-info-item h3{
+    font-size: 20px;
+    text-transform: capitalize;
+    margin: 0 0 5px;
+}
+.contact-info-item .social-links a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 4px 0 0;
+    height: 40px;
+    width: 40px;
+    background-color: var(--white-alpha-25);
+    color: var(--main-color);
+    border-radius: 50%;
+    border: 1px solid var(--white-alpha-40);
+    transition: all 0.3s ease;
+}
+.contact-info-item .social-links a:hover{
+    color: var(--white);
+    background-color: var(--main-color);
 }
